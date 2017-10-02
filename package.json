@@ -1,0 +1,56 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/desktop/desktop.git"
+  },
+  "main": "./app/dist/main.js",
+  "name": "etest",
+  "version": "0.0.1",
+  "description": "easy test tool",
+  "author": {
+    "name": "ohnoohyesohmygod",
+    "email": "ohnoohyesohmygod@gmail.com",
+    "url": "https://github.com/ohnoohyesohmygod"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build:prod": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.dev.js",
+    "pkg:mac": "ts-node build/build.ts --platfrom mac",
+    "pkg:win": "ts-node build/build.ts --platfrom win"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.31",
+    "@types/react": "^16.0.7",
+    "@types/react-dom": "^15.5.5",
+    "awesome-typescript-loader": "^3.2.3",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-minify": "^0.2.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "babel-webpack-plugin": "^0.1.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.1.0",
+    "electron": "^1.7.8",
+    "electron-builder": "^19.33.0",
+    "html-webpack-plugin": "^2.30.1",
+    "optimist": "^0.6.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "tslint-microsoft-contrib": "^5.0.1",
+    "tslint-react": "^3.2.0",
+    "typescript": "^2.5.3",
+    "uglify-js": "^3.1.3",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "vrsource-tslint-rules": "^5.1.1",
+    "webpack": "^3.6.0",
+    "webpack-merge": "^4.1.0",
+    "webpack-target-electron-renderer": "^0.4.0"
+  }
+}
