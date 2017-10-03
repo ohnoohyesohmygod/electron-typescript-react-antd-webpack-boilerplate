@@ -20,7 +20,7 @@ const config = {
             ],
         }),
 
-        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]
 };
 

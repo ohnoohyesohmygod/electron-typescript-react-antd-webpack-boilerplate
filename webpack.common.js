@@ -5,6 +5,7 @@ const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const tsImportPluginFactory = require('ts-import-plugin')
 
 const commonConfig = {
     output: {
@@ -18,19 +19,28 @@ const commonConfig = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
+                test: /\.(jsx|tsx|js|ts)$/,
+                loader: 'ts-loader',
                 include: path.resolve(__dirname, 'src'),
-                use: [
-                    {
-                        loader: 'awesome-typescript-loader',
-                        options: {
-                            useBabel: true,
-                            useCache: false,
-                        },
-                    },
-                ],
-                exclude: /node_modules/,
-            }
+                options: {
+                    transpileOnly: true,
+                    getCustomTransformers: () => ({
+                        before: [ tsImportPluginFactory({ libraryName: "antd", style: "css" }) ]
+                    }),
+                    compilerOptions: {
+                        module: 'es6'
+                    }
+                },
+                exclude: /node_modules/
+            },
+            { 
+                test: /\.css$/, 
+                loader: "style-loader!css-loader" 
+            },
+            { 
+                test: /\.less$/, 
+                loaders: ["style-loader", "css-loader", "less-loader"]
+            },
         ]
     },
 
@@ -47,7 +57,7 @@ const commonConfig = {
     ],
 
     resolve: {
-        extensions: [ ".tsx", ".ts", ".js" ]
+        extensions: [ ".tsx", ".ts", ".js", ".json" ]
     },
     
     node: {

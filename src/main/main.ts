@@ -1,22 +1,22 @@
-import {app, BrowserWindow } from 'electron'
-// import * as path from 'path'
-// import * as url from 'url'
-// import * as http from 'http'
+import {app} from 'electron'
+import {LoginWin} from './login_win'
+import {AppWin} from './app_win'
 
-let win: IndexWindow
+let loginWin: LoginWin | null
+let appWin: AppWin | null
 
 app.on("ready", () => {
-    win = new IndexWindow()
-    win.webContents.openDevTools()
+    loginWin = new LoginWin()
+    // loginWin.onClosed(() => {
+    //     loginWin = null
+    // })
+    // loginWin.load()
+
+
+    appWin = new AppWin()
+    appWin.onClosed(() => {
+        appWin = null
+    })
+    appWin.load()
+    // appWin.webContents.openDevTools()
 })
-
-class IndexWindow extends BrowserWindow {
-    public constructor() {
-        super({
-            width: 800,
-            height: 600
-        })
-
-        this.loadURL(`file://${__dirname}/../pages/index.html`)
-    }
-}
