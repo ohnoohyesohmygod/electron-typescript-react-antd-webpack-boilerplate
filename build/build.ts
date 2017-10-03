@@ -1,17 +1,17 @@
-import * as builder from "electron-builder";
-const argv = require('optimist').argv;
+import * as builder from "electron-builder"
+const argv = require('optimist').argv
 
 
 function getPlatfrom(): builder.Platform {
-    switch(argv.platfrom) {
+    switch (argv.platfrom) {
         case 'mac':
-            return builder.Platform.MAC;
+            return builder.Platform.MAC
         case 'win':
-            return builder.Platform.WINDOWS;
+            return builder.Platform.WINDOWS
         case 'linux':
-            return builder.Platform.LINUX;
+            return builder.Platform.LINUX
         default:
-            return builder.Platform.MAC;
+            return builder.Platform.MAC
     }
 }
 
@@ -22,7 +22,7 @@ builder.build({
         appId: "com.ohnoohyesohmygod.etest",
         copyright: "ohnoohyesohmygod all right receiver",
         productName: "ETest",
-        dmg:{
+        dmg: {
             icon: "build/icon.icns",
             // background: "",
             window: {
@@ -47,7 +47,7 @@ builder.build({
     // handle result
 }).catch((err) => {
     // handle error
-});
+})
 
 
 /*
